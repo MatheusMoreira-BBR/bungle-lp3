@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            background-color: #043c5a;
+            background-image: url('assets/bg-pattern.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
+            flex: 1;
+        }
+
+        .header-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 1.5rem;
+            width: 100%;
+            max-width: 1024px;
+        }
+
+        .logo-bunge {
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .logo-fornada {
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1024px;
+            padding: 0 1.5rem 3rem 1.5rem;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 0 0 auto;
+            max-width: 550px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .highlight-box {
+            background-color: #e6aa23;
+            color: #043c5a;
+            padding: 0.6rem 2rem;
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            border-radius: 0 20px 20px 0;
+            display: inline-block;
+            margin-left: -1.5rem;
+            padding-left: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .highlight-box {
+                position: relative;
+            }
+
+            .highlight-box::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 100%;
+                width: 50vw;
+                background-color: #e6aa23;
+            }
+        }
+
+        .description {
+            color: #fff;
+            font-size: 1.3rem;
+            line-height: 1.5;
+            margin-top: 1rem;
+            font-weight: 400;
+        }
+
+        .description br {
+            display: block;
+        }
+
+        .aproveite {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-style: italic;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .cta-button {
+            background-color: #d28728;
+            color: #043c5a;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.15rem;
+            padding: 1rem 1.8rem;
+            border-radius: 25px;
+            display: inline-block;
+            transition: transform 0.2s, background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            word-break: break-word;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background-color: #d68710;
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .hero-image-wrapper {
+            flex: 1 1 auto;
+            display: flex;
+            justify-content: flex-end;
+            margin-right: calc(50% - 50vw);
+            min-width: 0;
+        }
+
+        .floating-oven {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            object-fit: contain;
+            object-position: right center;
+        }
+
+        .footer {
+            background-color: #fff;
+            padding: 4rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1024px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-contact {
+            color: #043c5a;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+        }
+
+        .footer-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .footer-contact strong {
+            font-weight: 700;
+        }
+
+        .footer-contact a {
+            color: #043c5a;
+            text-decoration: none;
+        }
+
+        .footer-contact p {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact p:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            width: 176px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: space-between;
+            width: 176px;
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            transition: transform 0.2s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .header-logos {
+                flex-direction: row;
+                gap: 1.5rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .logo-bunge {
+                height: 25px;
+            }
+
+            .logo-fornada {
+                height: 40px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-bottom: 2rem;
+                padding-right: 0;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                align-items: flex-start;
+                text-align: left;
+                padding-right: 1.5rem;
+            }
+
+            .title-group {
+                align-items: flex-start;
+            }
+
+            .highlight-box {
+                font-size: 2rem;
+                padding: 0.6rem 1.5rem 0.6rem 2rem;
+            }
+
+            .description br {
+                display: none;
+            }
+
+            .description {
+                font-size: 1.15rem;
+            }
+
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.9rem 1.5rem;
+            }
+
+            .hero-image-wrapper {
+                margin-right: 0;
+                margin-top: 3rem;
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .floating-oven {
+                max-width: 420px;
+                object-position: right center;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-contact {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="hero-section">
+        <div class="header-logos">
+            <img src="assets/logo-bunge.png" alt="Bunge Profissional" class="logo-bunge">
+            <img src="assets/logo-fornada.png" alt="Fornada de Vantagens" class="logo-fornada">
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="title-group">
+                    <span class="highlight-box">O VERÃO CHEGOU COM</span>
+                    <span class="highlight-box">TUDO NO FORNADA</span>
+                    <span class="highlight-box">DE VANTAGENS!</span>
+                </h1>
+
+                <p class="description">
+                    Seus pontos já estão liberados.<br>
+                    Agora é só acessar o app ou o<br>
+                    site, escolher entre as diversas<br>
+                    opções incríveis no catálogo de<br>
+                    prêmios e fazer o resgate!
+                </p>
+
+                <p class="aproveite">Aproveite:</p>
+
+                <div>
+                    <a href="https://www.fornadadevantagens.com.br" class="cta-button" target="_blank"
+                        rel="noopener noreferrer">
+                        <span aria-hidden="true">WWW.FORNADADEVANTAGENS.COM.BR.</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-image-wrapper">
+                <img src="assets/forno.png" alt="Forno com pães e estrelas" class="floating-oven">
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-contact">
+                <p>
+                    <strong>Fale Conosco e WhatsApp 0800 11 28643</strong><br>
+                    De segunda a sexta, das 8h às 18h<br>
+                    <a href="mailto:contato@fornadadevantagens.com.br" class="footer-link">
+                        <span class="sr-only">Enviar e-mail para contato</span>
+                        <span aria-hidden="true">contato@fornadadevantagens.com.br</span>
+                    </a>
+                </p>
+                <p>
+                    <strong>Acesse também</strong><br>
+                    <a href="https://loja.bungeprofissional.com.br/" target="_blank" rel="noopener noreferrer"
+                        class="footer-link">
+                        <span class="sr-only">Acessar Loja Bunge Profissional</span>
+                        <span aria-hidden="true">https://loja.bungeprofissional.com.br/</span>
+                    </a>
+                </p>
+            </div>
+
+            <div class="footer-brand">
+                <img src="assets/bunge-logo-blue.png" alt="Bunge Profissional" class="footer-logo">
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><img src="assets/facebook.png" alt="Facebook"
+                            class="social-icon"></a>
+                    <a href="#" aria-label="YouTube"><img src="assets/youtube.png" alt="YouTube"
+                            class="social-icon"></a>
+                    <a href="#" aria-label="Instagram"><img src="assets/instagram.png" alt="Instagram"
+                            class="social-icon"></a>
+                    <a href="#" aria-label="WhatsApp"><img src="assets/whatsapp.png" alt="WhatsApp"
+                            class="social-icon"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
